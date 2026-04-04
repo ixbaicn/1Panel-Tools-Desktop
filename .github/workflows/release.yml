@@ -42,9 +42,9 @@ jobs:
       matrix:
         include:
           - platform: ubuntu-22.04
-            args: '--release'
+            args: ''
           - platform: windows-latest
-            args: '--release'
+            args: ''
     runs-on: ${{ matrix.platform }}
 
     steps:
