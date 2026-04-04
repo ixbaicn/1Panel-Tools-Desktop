@@ -37,6 +37,19 @@ pnpm dev
 
 The application will automatically redirect to the Docker Compose to 1Panel AppStore converter tool.
 
+
+### Desktop App (Tauri)
+
+This project now includes a Tauri 2 desktop target under `src-tauri/`. The integration follows the official Tauri setup flow (install `@tauri-apps/cli` + `@tauri-apps/api`, then scaffold with `tauri init`).
+
+```bash
+# Local desktop development
+pnpm tauri:dev
+
+# Build desktop bundles
+pnpm tauri:build
+```
+
 ## Usage
 
 1. **Input Docker Compose**: Paste your Docker Compose file into the editor
