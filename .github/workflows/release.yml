@@ -42,9 +42,9 @@ jobs:
       matrix:
         include:
           - platform: ubuntu-22.04
-            args: ''
+            args: '--release'
           - platform: windows-latest
-            args: ''
+            args: '--release'
     runs-on: ${{ matrix.platform }}
 
     steps:
@@ -71,6 +71,15 @@ jobs:
 
       - name: Install frontend dependencies
         run: pnpm install --frozen-lockfile=false
+
+      - name: Validate release-only args
+        shell: pwsh
+        run: |
+          $extraArgs = '${{ inputs.tauri_args }}'
+          if ($extraArgs -match '(^|\s)--debug(\s|$)') {
+            Write-Error 'Release workflow does not allow --debug. Remove it from tauri_args.'
+            exit 1
+          }
 
       - name: Build and publish Tauri app
         uses: tauri-apps/tauri-action@v0
