@@ -1,5 +1,5 @@
 home:
-  subtitle: Docker Compose 转 1Panel 应用商店创建器
+  subtitle: 1Panel AppStore 创建工具的桌面端封装
   home: 首页
   toggleMenu: 切换菜单
   nav:
@@ -9,21 +9,21 @@ home:
     mode: 切换深色/浅色模式
     aboutLabel: 关于
     github: GitHub 仓库
-    githubRepository: IT-Tools GitHub 仓库
+    githubRepository: 1Panel Tools Desktop GitHub 仓库
 
 tools:
   categories:
     favorite-tools: 收藏工具
   docker-compose-to-1panel-appstore:
-    title: Docker Compose 转 1Panel 应用商店
-    description: 将 Docker Compose 文件转换为 1Panel 应用商店格式
+    title: Docker Compose 转 1Panel AppStore
+    description: 将 Docker Compose 文件转换为 1Panel AppStore 格式
 
 locale-selector:
   select-a-language: 选择语言
 
 favoriteButton:
-  remove: 从收藏夹中移除
-  add: 添加到收藏夹
+  remove: 从收藏中移除
+  add: 添加到收藏
 
 search:
   label: 搜索
@@ -31,20 +31,30 @@ search:
 
 textareaCopyable:
   copy: 复制到剪贴板
-  copied: 已复制！
+  copied: 已复制
   download: 下载
 
 inputCopyable:
   copy: 复制
-  copied: 已复制！
+  copied: 已复制
 
 about:
   content-fork: |
-    # 关于 1Panel 工具
-    
-    这是 IT-Tools 的专门版本，专注于 Docker Compose 到 1Panel 应用商店的转换。
-    
-    轻松将您的 Docker Compose 文件转换为 1Panel 应用商店格式。
+    # 关于 1Panel Tools Desktop
+
+    这个仓库是在现有 1Panel-Tools 项目基础上增加 Tauri 桌面端封装后的版本。
+
+    ## 归属说明
+
+    - 上游基础项目：IT-Tools，原作者 Corentin Th
+    - 1Panel 方向改造：arch3rPro/1Panel-Tools
+    - 当前桌面端封装贡献者：ixbaicn
+
+    ## 本仓库改动范围
+
+    当前仓库主要增加桌面端封装、构建工作流、发布工作流以及项目归属说明。
+
+    Docker Compose 转 1Panel AppStore 的既有核心功能实现，并未在这次桌面封装工作中被刻意重写。
   alltools-title: 所有工具（{toolsCount} 个工具）
   tools:
     category: 分类
@@ -53,6 +63,6 @@ about:
 
 404:
   notFound: 页面未找到
-  sorry: 抱歉，您访问的页面不存在。
-  maybe: 也许您想回到首页？
-  backHome: 回到首页
+  sorry: 抱歉，你访问的页面不存在。
+  maybe: 你也许想返回首页。
+  backHome: 返回首页

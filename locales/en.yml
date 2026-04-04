@@ -1,5 +1,5 @@
 home:
-  subtitle: Docker Compose to 1Panel AppStore Creator
+  subtitle: Desktop wrapper for the 1Panel AppStore creator
   home: Home
   toggleMenu: Toggle menu
   nav:
@@ -9,7 +9,7 @@ home:
     mode: Toggle dark/light mode
     aboutLabel: About
     github: GitHub repository
-    githubRepository: IT-Tools GitHub repository
+    githubRepository: 1Panel Tools Desktop GitHub repository
 
 tools:
   categories:
@@ -40,11 +40,21 @@ inputCopyable:
 
 about:
   content-fork: |
-    # About 1Panel Tools
-    
-    This is a specialized version of IT-Tools focused on Docker Compose to 1Panel AppStore conversion.
-    
-    Convert your Docker Compose files to 1Panel AppStore format with ease.
+    # About 1Panel Tools Desktop
+
+    This repository packages the existing 1Panel-Tools project as a desktop application with Tauri.
+
+    ## Attribution
+
+    - Original upstream foundation: IT-Tools by Corentin Th
+    - 1Panel adaptation: arch3rPro/1Panel-Tools
+    - Desktop packaging contributor: ixbaicn
+
+    ## Scope of changes
+
+    This repository mainly adds desktop packaging, build workflow, release workflow, and project attribution updates.
+
+    The existing Docker Compose to 1Panel AppStore feature implementation was not intentionally rewritten as part of this packaging work.
   alltools-title: All tools ({toolsCount} tools)
   tools:
     category: Category

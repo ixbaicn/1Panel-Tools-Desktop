@@ -43,7 +43,7 @@ const tools = computed<ToolCategory[]>(() => [
           </div>
           <div class="divider" />
           <div class="subtitle">
-            1Panel AppStore Creator
+            Desktop Wrapper for 1Panel AppStore Creator
           </div>
         </div>
       </RouterLink>
@@ -65,8 +65,8 @@ const tools = computed<ToolCategory[]>(() => [
           <div>
             1Panel-Tools
 
-            <c-link target="_blank" rel="noopener" href="https://github.com/arch3rPro/1Panel-Tools/releases/tag/v0.3.0">
-              v0.3.0
+            <c-link target="_blank" rel="noopener" href="https://github.com/ixbaicn/1Panel-Tools-Desktop/releases">
+              v{{ version }}
             </c-link>
 
             <template v-if="commitSha && commitSha.length > 0">
@@ -75,16 +75,20 @@ const tools = computed<ToolCategory[]>(() => [
                 target="_blank"
                 rel="noopener"
                 type="primary"
-                :href="`https://github.com/arch3rPro/1Panel-Tools/tree/${commitSha}`"
+                :href="`https://github.com/ixbaicn/1Panel-Tools-Desktop/tree/${commitSha}`"
               >
                 {{ commitSha }}
               </c-link>
             </template>
           </div>
           <div>
-            © {{ new Date().getFullYear() }}
-            <c-link target="_blank" rel="noopener" href="https://arch3rpro.github.io/">
+            Copyright {{ new Date().getFullYear() }}
+            <c-link target="_blank" rel="noopener" href="https://github.com/arch3rPro/1Panel-Tools">
               arch3rPro
+            </c-link>
+            /
+            <c-link target="_blank" rel="noopener" href="https://github.com/ixbaicn">
+              ixbaicn
             </c-link>
           </div>
         </div>
@@ -122,17 +126,6 @@ const tools = computed<ToolCategory[]>(() => [
 </template>
 
 <style lang="less" scoped>
-// ::v-deep(.n-layout-scroll-container) {
-//     @percent: 4%;
-//     @position: 25px;
-//     @size: 50px;
-//     @color: #eeeeee25;
-//     background-image: radial-gradient(@color @percent, transparent @percent),
-//         radial-gradient(@color @percent, transparent @percent);
-//     background-position: 0 0, @position @position;
-//     background-size: @size @size;
-// }
-
 .support-button {
   background: rgb(37, 99, 108);
   background: linear-gradient(48deg, rgba(37, 99, 108, 1) 0%, rgba(59, 149, 111, 1) 60%, rgba(20, 160, 88, 1) 100%);

@@ -1,117 +1,93 @@
-# 1Panel-Tools
+# 1Panel Tools Desktop
 
-[English](README_en.md) ｜ [Chinese](README.md)
+English | [中文](./README.md)
+
 ## Overview
 
-1Panel-Tools is a specialized toolkit designed to simplify the process of creating applications for the 1Panel AppStore. The primary tool in this collection is the Docker Compose to 1Panel AppStore converter, which transforms standard Docker Compose files into the format required by the 1Panel AppStore.
+`1Panel Tools Desktop` is the desktop-packaged edition of `1Panel-Tools`. It uses Tauri 2 to wrap the existing Docker Compose to 1Panel AppStore tool into a distributable desktop application.
 
-![1Panel-Tools](./public/1Panel-Tools.png) 
-## Features
+This repository focuses on:
 
-- **Docker Compose Conversion**: Automatically convert Docker Compose files to 1Panel AppStore format
-- **Parameter Configuration**: Easily define and manage application parameters
-- **Metadata Management**: Set application name, description, tags, and other metadata
-- **Multi-language Support**: Configure descriptions in both English and Chinese
-- **Export Functionality**: Download the converted files ready for 1Panel AppStore submission
+- keeping the current web tool behavior and core implementation intact
+- adding Windows/Linux desktop packaging
+- providing GitHub Actions CI and GitHub Releases publishing
 
-## Getting Started
+![1Panel Tools Desktop](./public/1Panel-Tools.png)
 
-### Prerequisites
+## Original Authors And Contributors
 
-- Node.js (v14 or higher)
-- pnpm (v9.11.0 or higher)
+- Upstream foundation: `IT-Tools`
+- Original upstream author: `Corentin Th`
+- 1Panel-oriented adaptation: `arch3rPro/1Panel-Tools`
+- Desktop packaging, release workflow integration, and desktop distribution contribution in this repository: `ixbaicn`
 
-### Installation
+## Scope Of Changes
+
+This repository mainly adds:
+
+- the Tauri 2 desktop wrapper
+- desktop build outputs and packaging
+- GitHub Actions CI / Release workflows
+- attribution and licensing notices for the desktop distribution
+
+This repository does not claim a rewrite of the original core business features. The Docker Compose to 1Panel AppStore implementation, tool flow, and existing feature behavior remain based on the inherited project structure.
+
+See [NOTICE](./NOTICE) and [LICENSE](./LICENSE) for attribution and licensing details.
+
+## Current Features
+
+- Docker Compose to 1Panel AppStore conversion
+- App metadata and parameter editing
+- Export-ready output generation
+- Local desktop development
+- Desktop installer builds
+- GitHub Releases upload for desktop bundles
+
+## Local Development
+
+### Requirements
+
+- Node.js 22+
+- pnpm 9.11+
+- Rust stable
+- Tauri 2 build dependencies
+
+### Install
 
 ```bash
-# Clone the repository
-git clone https://github.com/arch3rPro/1Panel-Tools.git
-cd 1Panel-Tools
-
-# Install dependencies
 pnpm install
+```
 
-# Start the development server
+### Web Dev
+
+```bash
 pnpm dev
 ```
 
-The application will automatically redirect to the Docker Compose to 1Panel AppStore converter tool.
-
-
-### Desktop App (Tauri)
-
-This project now includes a Tauri 2 desktop target under `src-tauri/`. The integration follows the official Tauri setup flow (install `@tauri-apps/cli` + `@tauri-apps/api`, then scaffold with `tauri init`).
+### Desktop Dev
 
 ```bash
-# Local desktop development
 pnpm tauri:dev
+```
 
-# Build desktop bundles
+### Build Desktop Bundles
+
+```bash
 pnpm tauri:build
 ```
 
-## Usage
+## GitHub Release Flow
 
-1. **Input Docker Compose**: Paste your Docker Compose file into the editor
-2. **Configure Application**: Set the application name, key, description, and other metadata
-3. **Define Parameters**: Add parameters for your application (ports, environment variables, etc.)
-4. **Preview Conversion**: Review the generated 1Panel AppStore files
-5. **Export**: Download the converted files for use with 1Panel AppStore
+The repository already includes a desktop release workflow:
 
-### Docker Usage
-
-#### Using Docker Run
-
-```bash
-# Pull and run the Docker image
-docker run -d --name 1panel-tools -p 8080:8080 vuldocker/1panel-tools:latest
-```
-
-Access the tool at http://localhost:8080
-
-#### Using Docker Compose
-
-Use `docker-compose.yml` file with the following content and set port:
-
-```yaml
-version: '3'
-services:
-  1panel-tools:
-    image: vuldocker/1panel-tools:latest
-    container_name: 1panel-tools
-    ports:
-      - "8080:80"
-    restart: unless-stopped
-```
-
-Then run:
-
-```bash
-docker-compose up -d
-```
-
-Access the tool at http://localhost:8080
-
-## 1Panel AppStore Format
-
-The converter generates files following the 1Panel AppStore format:
-
-```
-├── app-key/
-    ├── logo.png
-    ├── data.yml
-    ├── README.md
-    └── version/
-        ├── data.yml
-        ├── docker-compose.yml
-        └── scripts/
-```
+1. Push the target code to `main`
+2. Create and publish a GitHub Release
+3. GitHub Actions builds the desktop app
+4. The generated bundles are uploaded to that Release
 
 ## License
 
-This project is licensed under the GNU GPLv3 License - see the LICENSE file for details.
+This project remains licensed under `GNU GPLv3`.
 
-## Acknowledgements
-
-- Based on the IT-Tools project framework
-- Designed specifically for 1Panel AppStore application development
+- Full license text: [LICENSE](./LICENSE)
+- Attribution, contributor, and modification notice: [NOTICE](./NOTICE)

@@ -1,118 +1,93 @@
-# 1Panel-Tools
+# 1Panel Tools Desktop
 
-[英文](README_en.md) ｜ [中文](README.md)
-## 概述
+[English](./README_en.md) | 中文
 
-1Panel-Tools 是一个专门设计的工具集，旨在简化为 1Panel AppStore 创建应用程序的过程。该集合中的主要工具是 Docker Compose 到 1Panel AppStore 的转换器，它将标准的 Docker Compose 文件转换为 1Panel AppStore 所需的格式。
+## 项目简介
 
-![1Panel-Tools](./public/1Panel-Tools.png) 
+`1Panel Tools Desktop` 是 `1Panel-Tools` 的桌面端封装版本，使用 Tauri 2 将现有的 Docker Compose 转 1Panel AppStore 工具打包为可分发的桌面应用。
 
-## 功能特点
+当前仓库的目标是：
 
-- **Docker Compose 转换**：自动将 Docker Compose 文件转换为 1Panel AppStore 格式
-- **参数配置**：轻松定义和管理应用程序参数
-- **元数据管理**：设置应用程序名称、描述、标签和其他元数据
-- **多语言支持**：配置中英文描述
-- **导出功能**：下载转换后的文件，准备提交到 1Panel AppStore
+- 保留现有 Web 工具的核心功能与交互逻辑
+- 增加 Windows/Linux 桌面端构建与发布能力
+- 提供 GitHub Actions 自动构建与 GitHub Releases 发布流程
 
-## 快速开始
+![1Panel Tools Desktop](./public/1Panel-Tools.png)
 
-### 前提条件
+## 原作者与贡献者
 
-- Node.js (v14 或更高版本)
-- pnpm (v9.11.0 或更高版本)
+- 上游基础项目：`IT-Tools`
+- 上游原作者：`Corentin Th`
+- 1Panel 方向改造：`arch3rPro/1Panel-Tools`
+- 当前仓库桌面端封装、构建发布流程与桌面分发适配贡献者：`ixbaicn`
 
-### 安装
+## 改动说明
+
+当前仓库主要提供桌面端封装能力，包括：
+
+- Tauri 2 桌面端工程
+- 桌面端构建与安装包输出
+- GitHub Actions CI / Release 工作流
+- 项目归属、贡献者与许可证说明整理
+
+未在本次整理中声明重写原有核心业务逻辑。Docker Compose 转 1Panel AppStore 的主要功能实现、页面流程和工具行为，仍基于现有项目体系。
+
+更多归属与许可证信息见 [NOTICE](./NOTICE) 与 [LICENSE](./LICENSE)。
+
+## 当前功能
+
+- Docker Compose 转 1Panel AppStore
+- 应用元信息与参数配置
+- 转换结果导出
+- 桌面端本地运行
+- 桌面端安装包构建
+- GitHub Releases 自动上传桌面构建产物
+
+## 本地开发
+
+### 环境要求
+
+- Node.js 22+
+- pnpm 9.11+
+- Rust stable
+- Tauri 2 构建依赖
+
+### 安装依赖
 
 ```bash
-# 克隆仓库
-git clone https://github.com/arch3rPro/1Panel-Tools.git
-cd 1Panel-Tools
-
-# 安装依赖
 pnpm install
+```
 
-# 启动开发服务器
+### Web 开发
+
+```bash
 pnpm dev
 ```
 
-应用程序将自动重定向到 Docker Compose 到 1Panel AppStore 的转换工具。
-
-
-### 桌面端（Tauri）
-
-项目已接入 Tauri 2（标准目录为 `src-tauri/`）。初始化方式遵循 Tauri 官方流程（安装 `@tauri-apps/cli` + `@tauri-apps/api`，并使用 `tauri init` 生成 Rust 工程骨架）。
+### 桌面端开发
 
 ```bash
-# 本地开发（Web + Desktop）
 pnpm tauri:dev
+```
 
-# 构建桌面端安装包
+### 构建桌面安装包
+
+```bash
 pnpm tauri:build
 ```
 
-## 使用方法
+## GitHub 发布
 
-1. **输入 Docker Compose**：将您的 Docker Compose 文件粘贴到编辑器中
-2. **配置应用程序**：设置应用程序名称、键值、描述和其他元数据
-3. **定义参数**：为您的应用程序添加参数（端口、环境变量等）
-4. **预览转换**：查看生成的 1Panel AppStore 文件
-5. **导出**：下载转换后的文件，用于 1Panel AppStore
+仓库已包含桌面端发布工作流：
 
-### Docker 使用方法
-
-#### 使用 Docker Run
-
-```bash
-# 拉取并运行 Docker 镜像
-docker run -d --name 1panel-tools -p 8080:8080 vuldocker/1panel-tools:latest
-```
-
-访问工具：http://localhost:8080
-
-#### 使用 Docker Compose
-
-使用项目 `docker-compose.yml` 文件，修改映射端口，内容如下：
-
-```yaml
-version: '3'
-services:
-  1panel-tools:
-    image: vuldocker/1panel-tools:latest
-    container_name: 1panel-tools
-    ports:
-      - "8080:80"
-    restart: unless-stopped
-```
-
-然后运行：
-
-```bash
-docker-compose up -d
-```
-
-访问工具：http://localhost:8080
-
-## 1Panel AppStore 格式
-
-转换器生成的文件遵循 1Panel AppStore 格式：
-
-```
-├── app-key/
-    ├── logo.png
-    ├── data.yml
-    ├── README.md
-    └── version/
-        ├── data.yml
-        ├── docker-compose.yml
-        └── scripts/
-```
+1. 推送代码到 `main`
+2. 创建并发布 GitHub Release
+3. GitHub Actions 自动构建桌面应用
+4. 构建产物自动上传到该 Release
 
 ## 许可证
 
-本项目采用 GNU GPLv3 许可证 - 详情请参阅 LICENSE 文件。
+本项目继续遵循 `GNU GPLv3`。
 
-## 致谢
-
-- 基于 IT-Tools 项目框架
-- 专为 1Panel AppStore 应用程序开发设计
+- 许可证正文见 [LICENSE](./LICENSE)
+- 原作者、贡献者与改动范围说明见 [NOTICE](./NOTICE)

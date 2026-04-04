@@ -1,0 +1,19 @@
+1Panel Tools Desktop - Attribution Notice
+
+License
+- This project is distributed under GNU GPLv3. See LICENSE for the full license text.
+
+Attribution chain
+- Original upstream foundation: IT-Tools
+- Original upstream author: Corentin Th
+- 1Panel-oriented adaptation: arch3rPro/1Panel-Tools
+- Desktop packaging contributor for this repository: ixbaicn
+
+Current repository scope
+- This repository adds Tauri desktop packaging.
+- This repository adds desktop build and release workflows.
+- This repository adds desktop distribution metadata and attribution documentation.
+
+Unchanged implementation statement
+- The existing core tool functionality was not intentionally rewritten as part of the desktop packaging work.
+- The Docker Compose to 1Panel AppStore conversion logic remains based on the inherited project implementation.

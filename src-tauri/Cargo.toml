@@ -2,7 +2,7 @@
 name = "onepanel-tools-desktop"
 version = "0.1.0"
 description = "1Panel-Tools Desktop"
-authors = ["you"]
+authors = ["arch3rPro (1Panel adaptation)", "ixbaicn (desktop packaging contributor)"]
 edition = "2021"
 
 [lib]

@@ -3,12 +3,12 @@
   "type": "module",
   "version": "0.3.0",
   "packageManager": "pnpm@9.11.0",
-  "description": "Docker Compose to 1Panel AppStore converter tool",
-  "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://corentin.tech)",
+  "description": "Desktop-packaged Docker Compose to 1Panel AppStore tool built with Tauri",
+  "author": "Corentin Th (upstream IT-Tools), arch3rPro (1Panel adaptation), ixbaicn (desktop packaging contributor)",
   "license": "GNU GPLv3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arch3rPro/1Panel-Tools"
+    "url": "https://github.com/ixbaicn/1Panel-Tools-Desktop"
   },
   "keywords": [
     "productivity",

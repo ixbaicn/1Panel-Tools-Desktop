@@ -6,8 +6,8 @@ import { NSpin } from 'naive-ui';
 
 const router = useRouter();
 
-const title = '1Panel-Tools - 1Panel AppStore Creator';
-const desc = 'Create Docker Compose applications for 1Panel AppStore with ease';
+const title = '1Panel Tools Desktop';
+const desc = 'Desktop wrapper for the Docker Compose to 1Panel AppStore tool';
 
 useHead({
   title,

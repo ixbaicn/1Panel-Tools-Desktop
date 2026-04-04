@@ -5,8 +5,8 @@ import { useToolStore } from '@/tools/tools.store';
 
 const toolStore = useToolStore();
 
-const desc = 'Collection of handy online tools for developers, with great UX. IT Tools is a free and open-source collection of handy online tools for developers & people working in IT.';
-const title = 'About - IT Tools';
+const desc = 'Desktop-packaged 1Panel Tools application with original author attribution and desktop packaging contributor information.';
+const title = 'About - 1Panel Tools Desktop';
 useHead({
   title,
   meta: [
