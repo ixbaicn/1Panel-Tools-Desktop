@@ -38,6 +38,19 @@ pnpm dev
 
 应用程序将自动重定向到 Docker Compose 到 1Panel AppStore 的转换工具。
 
+
+### 桌面端（Tauri）
+
+项目已接入 Tauri 2（标准目录为 `src-tauri/`）。初始化方式遵循 Tauri 官方流程（安装 `@tauri-apps/cli` + `@tauri-apps/api`，并使用 `tauri init` 生成 Rust 工程骨架）。
+
+```bash
+# 本地开发（Web + Desktop）
+pnpm tauri:dev
+
+# 构建桌面端安装包
+pnpm tauri:build
+```
+
 ## 使用方法
 
 1. **输入 Docker Compose**：将您的 Docker Compose 文件粘贴到编辑器中

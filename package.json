@@ -26,7 +26,9 @@
     "build": "vite build",
     "preview": "vite preview --port 5050",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
   },
   "dependencies": {
     "@guolao/vue-monaco-editor": "^1.5.2",
@@ -54,7 +56,8 @@
     "vue": "^3.5.25",
     "vue-i18n": "^11.1.9",
     "vue-router": "^4.1.6",
-    "yaml": "^2.8.0"
+    "yaml": "^2.8.0",
+    "@tauri-apps/api": "^2.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.41.0",
@@ -83,6 +86,7 @@
     "vite": "^4.4.9",
     "vite-plugin-node-polyfills": "^0.23.0",
     "vite-svg-loader": "^4.0.0",
-    "vue-tsc": "^1.8.1"
+    "vue-tsc": "^1.8.1",
+    "@tauri-apps/cli": "^2.0.0"
   }
 }
