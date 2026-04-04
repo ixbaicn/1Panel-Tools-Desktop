@@ -20,7 +20,7 @@
 ### 前提条件
 
 - Node.js (v14 或更高版本)
-- pnpm (v9.11.0 或更高版本)
+- npm (v10 或更高版本)
 
 ### 安装
 
@@ -30,13 +30,26 @@ git clone https://github.com/arch3rPro/1Panel-Tools.git
 cd 1Panel-Tools
 
 # 安装依赖
-pnpm install
+npm install
 
 # 启动开发服务器
-pnpm dev
+npm run dev
 ```
 
 应用程序将自动重定向到 Docker Compose 到 1Panel AppStore 的转换工具。
+
+
+### 桌面端（Tauri）
+
+项目已接入 Tauri 2（标准目录为 `src-tauri/`）。初始化方式遵循 Tauri 官方流程（安装 `@tauri-apps/cli` + `@tauri-apps/api`，并使用 `tauri init` 生成 Rust 工程骨架）。
+
+```bash
+# 本地开发（Web + Desktop）
+npm run tauri:dev
+
+# 构建桌面端安装包
+npm run tauri:build
+```
 
 ## 使用方法
 

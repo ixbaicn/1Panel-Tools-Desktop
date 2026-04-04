@@ -19,7 +19,7 @@
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- pnpm (v9.11.0 or higher)
+- npm (v10 or higher)
 
 ### Installation
 
@@ -29,13 +29,26 @@ git clone https://github.com/arch3rPro/1Panel-Tools.git
 cd 1Panel-Tools
 
 # Install dependencies
-pnpm install
+npm install
 
 # Start the development server
-pnpm dev
+npm run dev
 ```
 
 The application will automatically redirect to the Docker Compose to 1Panel AppStore converter tool.
+
+
+### Desktop App (Tauri)
+
+This project now includes a Tauri 2 desktop target under `src-tauri/`. The integration follows the official Tauri setup flow (install `@tauri-apps/cli` + `@tauri-apps/api`, then scaffold with `tauri init`).
+
+```bash
+# Local desktop development
+npm run tauri:dev
+
+# Build desktop bundles
+npm run tauri:build
+```
 
 ## Usage
 
