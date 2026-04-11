@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "1Panel Tools Desktop",
-        "width": 1366,
-        "height": 900,
+        "width": 1280,
+        "height": 800,
         "resizable": true
       }
     ],
