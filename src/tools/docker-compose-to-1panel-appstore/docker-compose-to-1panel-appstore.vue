@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
@@ -9,6 +9,7 @@ import yaml from 'yaml';
 import { Plus as IconPlus, Download as IconDownload } from '@vicons/tabler';
 
 // 参数类型定义
+let nextParamId = 1;
 interface AppParam {
   id: number;
   envKey: string;
@@ -81,7 +82,7 @@ const dockerCompose = ref(`services:
 // 应用参数配置
 const appParams = ref<AppParam[]>([
   {
-    id: Date.now(),
+    id: nextParamId++,
     envKey: 'PANEL_APP_PORT_HTTP',
     type: 'number',
     default: '8080',
@@ -492,18 +493,13 @@ const handleMultipleChange = (param: AppParam, enabled: boolean) => {
 };
 
 // 监听允许创建选项变化
-const handleAllowCreateChange = (param: AppParam, enabled: boolean) => {
-  // 允许创建选项时，通常需要调整校验规则
-  if (enabled) {
-    // 可以在这里添加一些额外的校验规则或提示
-    console.log('允许创建新选项已启用');
-  }
+const handleAllowCreateChange = (_param: AppParam, _enabled: boolean) => {
 };
 
 // 添加新参数
 const addParam = () => {
   const newParam: AppParam = {
-    id: Date.now(),
+    id: nextParamId++,
     envKey: '',
     type: 'text',
     labelEn: '',
@@ -674,18 +670,27 @@ const handleScroll = () => {
 };
 
 // 添加和移除滚动事件监听器
+const scrollListenerElements: HTMLElement[] = [];
 const manageScrollListeners = () => {
   const elements = document.querySelectorAll('.n-layout-scroll-container');
   elements.forEach(el => {
     const element = el as HTMLElement;
     if (element.scrollHeight > element.clientHeight) {
       element.addEventListener('scroll', handleScroll, { passive: true });
+      scrollListenerElements.push(element);
     }
   });
 };
 
+const removeScrollListeners = () => {
+  scrollListenerElements.forEach(el => {
+    el.removeEventListener('scroll', handleScroll);
+  });
+  scrollListenerElements.length = 0;
+};
+
 // 监听参数变化，仅在apps类型下处理child相关逻辑
-watch(appParams.value, (newParams) => {
+watch(appParams, (newParams) => {
   newParams.forEach(param => {
     // 仅在apps类型下才处理child相关逻辑
      if (param.type === 'apps') {
@@ -715,6 +720,10 @@ onMounted(() => {
     manageScrollListeners();
     setTimeout(handleScroll, 100);
   }, 500);
+});
+
+onUnmounted(() => {
+  removeScrollListeners();
 });
 </script>
 
@@ -1080,7 +1089,7 @@ onMounted(() => {
           </n-grid>
           
           <!-- 可选的服务依赖子菜单（仅在Apps类型下显示，由Child开关控制） -->
-          <div v-if="param.type === 'apps' && param.childEnabled">
+          <div v-if="param.type === 'apps' && param.childEnabled && param.child">
             <n-card title="可选的服务依赖子菜单" class="mb-4">
               <n-grid cols="2" x-gap="12">
                 <n-gi>
@@ -1088,26 +1097,26 @@ onMounted(() => {
                     <n-input v-model:value="param.child.default" placeholder="默认值为空" style="width: 100%; min-width: 0" />
                   </n-form-item>
                 </n-gi>
-                
+
                 <n-gi>
                   <n-form-item label="环境变量Key" required>
                     <n-input v-model:value="param.child.envKey" placeholder="如: PANEL_DB_HOST" style="width: 100%; min-width: 0" />
                   </n-form-item>
                 </n-gi>
               </n-grid>
-              
+
               <n-grid cols="2" x-gap="12">
                 <n-gi>
                   <n-form-item label="是否必填">
                     <n-switch v-model:value="param.child.required" />
                   </n-form-item>
                 </n-gi>
-                
+
                 <n-gi>
                   <n-form-item label="类型">
-                    <n-select 
-                      v-model:value="param.child.type" 
-                      :options="[{ label: 'Service', value: 'service' }]" 
+                    <n-select
+                      v-model:value="param.child.type"
+                      :options="[{ label: 'Service', value: 'service' }]"
                       disabled
                     />
                   </n-form-item>
